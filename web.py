@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import parse_qsl, urlparse
+import re
 
 class WebRequestHandler(BaseHTTPRequestHandler):
     def url(self):
@@ -14,13 +15,18 @@ class WebRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(self.get_response().encode("utf-8"))
 
-    #Home Page
+    #Sitio Web Dinámico
     def get_response(self):
-        #Error si la url es distinta a "/"
-        if self.path != "/":
-            return """<h1>Error 404</h1>"""
-        #Si la url esta en home despliega la página
-        return """<!DOCTYPE html>
+        p = self.url().path
+        com = re.search(r"/(proyecto/(\d+))?", p)
+        if com and p in html:
+            return html[p]
+        else:
+         return """<h1>Error 404</h1>"""
+
+html = {
+    "/": """
+       <!DOCTYPE html>
 <html lang="es">
   <head>
     <meta charset="UTF-8">
@@ -52,7 +58,8 @@ class WebRequestHandler(BaseHTTPRequestHandler):
     <h3>Frontend: JavaScript, htmx, React</h3>
   </body>
 </html>
-"""
+
+"""}  
         
 
 if __name__ == "__main__":
