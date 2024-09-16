@@ -35,7 +35,7 @@ html = {
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
- <h1>Ana Lee </h1> 
+ <h1>Juan Perez </h1> 
     <h2>Desarrolladora Web (Música/Diseño/Empresaria)</h2>
     <small>Este texto fue generado por Copilot:</small>
     <h3>
